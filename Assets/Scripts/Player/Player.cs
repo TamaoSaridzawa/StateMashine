@@ -9,16 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] protected Transform ShootPoint;
     [SerializeField] private ShopView view;
     [SerializeField] private CoinMenu _coinMenu;
-
     [SerializeField] private int _money;
-
-    public int Money => _money;
-
-   
-    public int IndexSkils { get; private set; } = 0;
 
     private Skill _currentSkill;
 
+    public int IndexSkils { get; private set; } = 0;
+
+    public int Money => _money;
     public Skill CurrentSkill => _currentSkill;
 
     private void Start()

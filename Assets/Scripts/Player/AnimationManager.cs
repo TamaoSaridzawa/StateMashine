@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 public class AnimationManager : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
+
     private int indexNormalAttack = 0;
     private int indexSwordAttack = 1;
     private int indexFireAttack = 2;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void Run()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -17,7 +18,6 @@ public class MovementController : MonoBehaviour
 
     private void Start()
     {
-        
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animationManager = GetComponent<AnimationManager>();
     }

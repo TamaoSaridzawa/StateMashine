@@ -8,7 +8,7 @@ public class FireDestroyer : MonoBehaviour
     {
         if (collision.TryGetComponent<Fire>(out Fire fire))
         {
-            Destroy(fire.gameObject);
+            //Destroy(fire.gameObject);
         }
     }
 }

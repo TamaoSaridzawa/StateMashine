@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Skill/Sword", order = 51)]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Sword : Skill
 {
@@ -9,11 +10,11 @@ public class Sword : Skill
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        //_rb = GetComponent<Rigidbody2D>();
     }
-    public override void Shoot(Transform startPointShoot)
+    public override void Action(Transform startPointShoot)
     {
-        Instantiate(gameObject, startPointShoot.position, startPointShoot.rotation);
+        //Instantiate(gameObject, startPointShoot.position, startPointShoot.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,12 +22,12 @@ public class Sword : Skill
         if (collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.TakeDamage(Damage);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
     private void FixedUpdate()
     {
-        _rb.velocity = transform.right * Speed;
+        //_rb.velocity = transform.right * Speed;
     }
 }

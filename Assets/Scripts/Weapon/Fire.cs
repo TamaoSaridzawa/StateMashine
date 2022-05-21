@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Skill/Fire", order = 51)]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Fire : Skill
 {
     [SerializeField ]private int _numberCharges = 10;
-    private Rigidbody2D _rb;
+    [SerializeField] private GameObject _prefabs;
+    //private Rigidbody2D _rb;
 
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+    //private void Start()
+    //{
+    //    _prefabs.GetComponent<Ri>
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,13 +23,14 @@ public class Fire : Skill
         }
     }
 
-    public override void Shoot(Transform startPointShoot)
+    public override void Action(Transform startPointShoot)
     {
-        Instantiate(gameObject, startPointShoot.position, startPointShoot.rotation);
+        Instantiate(_prefabs, startPointShoot.position, startPointShoot.rotation);
     }
 
     private void FixedUpdate()
     {
-        _rb.velocity = transform.right * Speed;
+        _prefabs.GetComponent<Rigidbody2D>().velocity = _prefabs.transform.right * Speed;
+        //_rb.velocity = transform.right * Speed;
     }
 }

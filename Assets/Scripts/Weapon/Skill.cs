@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Skill : MonoBehaviour
+public abstract class Skill : ScriptableObject
 {
     [SerializeField]private string _description;
     [SerializeField] private int _damage;
@@ -25,7 +25,7 @@ public abstract class Skill : MonoBehaviour
     public int Rang => _rang;
     public bool IsStudied => _isStudied;
 
-    public abstract void Shoot(Transform position);
+    public abstract void Action(Transform position);
 
     public void RaiseRang()
     {

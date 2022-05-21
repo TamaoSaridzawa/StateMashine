@@ -9,7 +9,7 @@ public class FireBallDestroy : MonoBehaviour
         if (collision.TryGetComponent<Fire>(out Fire fire))
         {
             Debug.Log("SDSS");
-            Destroy(fire.gameObject);
+            //Destroy(fire.gameObject);
         }
     }
 }

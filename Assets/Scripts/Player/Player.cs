@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
 
     public void AppleDamage()
     {
-        _currentSkill.Shoot(ShootPoint);
+        _currentSkill.Action(ShootPoint);
     }
 
     public void AddMoney(int money)

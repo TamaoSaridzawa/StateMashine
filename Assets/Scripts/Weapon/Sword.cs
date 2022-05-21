@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Sword : Skill
 {
+    private Rigidbody2D _rb;
 
-    public override void Shoot(Transform startPointShoot, bool direction)
+    private void Start()
     {
-        Instantiate(gameObject, startPointShoot.position, Quaternion.identity);
+        _rb = GetComponent<Rigidbody2D>();
+    }
+    public override void Shoot(Transform startPointShoot)
+    {
+        Instantiate(gameObject, startPointShoot.position, startPointShoot.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,8 +25,8 @@ public class Sword : Skill
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        gameObject.transform.Translate(Vector2.left * Speed * Time.deltaTime , Space.World);
+        _rb.velocity = transform.right * Speed;
     }
 }

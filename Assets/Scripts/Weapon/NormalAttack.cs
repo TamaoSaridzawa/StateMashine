@@ -5,25 +5,31 @@ using UnityEngine;
 public class NormalAttack : Skill
 {
 
-    [SerializeField] private Transform _distanceAtack;
+    //[SerializeField] private Transform _pointAtack;
+    [SerializeField] private float _distanceAtack;
+    [SerializeField] private LayerMask _enemyLayers;
+    //private Transform _curentPos;
 
-    public override void Shoot(Transform position, bool direction)
+    public override void Shoot(Transform pos)
     {
-        Instantiate(gameObject, position.position, Quaternion.identity);
-    }
+        Collider2D hitEnemy = Physics2D.OverlapCircle(pos.position, _distanceAtack, _enemyLayers);
+        //_curentPos = pos;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        if (hitEnemy == null)
         {
-            enemy.TakeDamage(Damage);
-            Destroy(gameObject);
+            return;
         }
+
+        hitEnemy.GetComponent<Enemy>().TakeDamage(Damage);
+
     }
 
-    private void Update()
-    {
-        gameObject.transform.position = Vector3.MoveTowards(transform.position, _distanceAtack.position , Speed);
-        Destroy(gameObject);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (_curentPos == null)
+    //    {
+    //        return;
+    //    }
+    ////    Gizmos.DrawSphere(_curentPos.position, _distanceAtack);
+    //}
 }

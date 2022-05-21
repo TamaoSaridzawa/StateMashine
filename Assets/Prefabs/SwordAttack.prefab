@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2f3518346e85adc41b8a08fcfe7940fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 9.2, y: 5.75}
@@ -101,13 +101,13 @@ MonoBehaviour:
     \u0441\u043E\u0437\u0434\u0430\u044E\u0449\u0438\u0439 \u0432\u043E\u043B\u043D\u0443
     \u0438 \u043D\u0430\u043D\u043E\u0441\u0438\u0442 \u0443\u0434\u0430\u0440 \u043E\u0434\u0438\u043D\u043E\u0447\u043D\u044B\u043C
     \u0446\u0435\u043B\u044F\u043C"
-  _damage: 20
+  _damage: 155
   _increasedDamage: 15
   _valueAddition: 10
   _icon: {fileID: 21300000, guid: 2f3518346e85adc41b8a08fcfe7940fa, type: 3}
   _isStudied: 0
-  _speed: 6
-  _price: 30
+  _speed: 10
+  _price: 50
   _rang: 1
   _maxRang: 3
 --- !u!61 &7452794708307316927

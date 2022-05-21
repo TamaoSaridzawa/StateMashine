@@ -10,7 +10,7 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] private int _increasedDamage;
     [SerializeField] private int _valueAddition;
     [SerializeField] private Sprite _icon; 
-    [SerializeField] private bool _isStudied;
+    [SerializeField] private bool _isStudied = false;
     [SerializeField] private float _speed;
     [SerializeField] private int _price;
     [SerializeField] private int _rang;
@@ -25,7 +25,7 @@ public abstract class Skill : MonoBehaviour
     public int Rang => _rang;
     public bool IsStudied => _isStudied;
 
-    public abstract void Shoot(Transform position, bool direction);
+    public abstract void Shoot(Transform position);
 
     public void RaiseRang()
     {

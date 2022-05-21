@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Fire : Skill
 {
     [SerializeField ]private int _numberCharges = 10;
-    private bool directionTraectory;
+    private Rigidbody2D _rb;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,21 +21,13 @@ public class Fire : Skill
         }
     }
 
-    public override void Shoot(Transform startPointShoot, bool direction)
+    public override void Shoot(Transform startPointShoot)
     {
-        Instantiate(gameObject, startPointShoot.position, Quaternion.identity);
+        Instantiate(gameObject, startPointShoot.position, startPointShoot.rotation);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        
-       if (directionTraectory == false)
-       {
-           gameObject.transform.Translate(Vector3.left * Speed * Time.deltaTime, Space.World);
-       }
-       else
-        {
-            gameObject.transform.Translate(Vector3.right * Speed * Time.deltaTime, Space.World);
-        }
+        _rb.velocity = transform.right * Speed;
     }
 }

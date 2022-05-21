@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -14,10 +13,11 @@ public class MovementController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private AnimationManager _animationManager;
 
-    public bool IslooksRight { get; private set; } = false;
+    public bool IslooksRight { get; private set; } = true;
 
     private void Start()
     {
+        
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animationManager = GetComponent<AnimationManager>();
     }
@@ -33,6 +33,15 @@ public class MovementController : MonoBehaviour
         }
         else
         {
+            if (IslooksRight == false && _moveVector.x > 0)
+            {
+              
+                Flip();
+            }
+            else if (IslooksRight == true &&_moveVector.x < 0)
+            {
+                Flip();
+            }
             Walk();
         }
 
@@ -42,7 +51,7 @@ public class MovementController : MonoBehaviour
             if (_player.CurrentSkill != null)
             {
                 _animationManager.Attack(_player.IndexSkils);
-                _player.AppleDamage(IslooksRight);
+                _player.AppleDamage();
             }
         }
 
@@ -62,6 +71,12 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    public void Flip()
+    {
+        IslooksRight = !IslooksRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
     private void CloseShopMenu()
     {
         _shop.gameObject.SetActive(false);
@@ -76,17 +91,17 @@ public class MovementController : MonoBehaviour
     {
         _animationManager.Run();
 
-        if (_moveVector.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-            IslooksRight = true;
-        }
+        //if (_moveVector.x < 0)
+        //{
+           
+        //    IslooksRight = true;
+        //}
 
-        if (_moveVector.x > 0)
-        {
-            _spriteRenderer.flipX = false;
-            IslooksRight = false;
-        }
+        //if (_moveVector.x > 0)
+        //{
+        //    //transform.Rotate(0f, 180f, 0f);
+        //    IslooksRight = false;
+        //}
 
         _rigidbody2D.velocity = new Vector2(_moveVector.x * _speed, _rigidbody2D.velocity.y);
     }

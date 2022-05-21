@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _health;
+    [SerializeField] private float _maxhealth;
+    [SerializeField] private float _currentHealth;
     [SerializeField] private List<Skill> _skills;
     [SerializeField] protected Transform ShootPoint;
     [SerializeField] private ShopView view;
     [SerializeField] private CoinMenu _coinMenu;
+    private SpriteRenderer _renderer;
+
     [SerializeField] private int _money;
+
+    public int Money => _money;
+
+    public float Health => _maxhealth;
+
+   
+    public int IndexSkils { get; private set; } = 0;
 
     private Skill _currentSkill;
 
-    public int IndexSkils { get; private set; } = 0;
-
-    public int Money => _money;
     public Skill CurrentSkill => _currentSkill;
+
+    public event UnityAction<float, float> _changedHealth;
 
     private void Start()
     {
+        _renderer = GetComponent<SpriteRenderer>();
+        _currentSkill = _skills[0];
         _coinMenu.ChangeMoney(_money);
+        
     }
 
     public void NextSkill()
@@ -44,12 +57,15 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
+        ChangedColor();
+        //ChangedStartColor();
+        _currentHealth -= damage;
+        _changedHealth?.Invoke(_currentHealth ,_maxhealth);
     }
 
-    public void AppleDamage(bool direction)
+    public void AppleDamage()
     {
-        _currentSkill.Shoot(ShootPoint, direction);
+        _currentSkill.Shoot(ShootPoint);
     }
 
     public void AddMoney(int money)
@@ -88,5 +104,15 @@ public class Player : MonoBehaviour
     private void SpendMoney(int money)
     {
         _money -= money;
+    }
+
+    public void ChangedColor()
+    {
+        _renderer.color = Color.red;
+    }
+
+    public void ChangedStartColor()
+    {
+        _renderer.color = Color.white;
     }
 }

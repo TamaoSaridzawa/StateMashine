@@ -26,7 +26,7 @@ public class Shop : MonoBehaviour
 
     private void OnSellButtonClick(Skill skill, ShopView view)
     {
-        if (_player.Money >= skill.Price)
+        if (_player.Money >= skill.Pryce)
         {
             if (skill.IsStudied)
             {

@@ -12,7 +12,7 @@ public class ShopView : MonoBehaviour
     [SerializeField] private TMP_Text _description;
     [SerializeField] private Button _sellButton;
     [SerializeField] private TMP_Text _price;
-    [SerializeField] private TMP_Text _damage;
+    [SerializeField] private TMP_Text _rang;
 
     public event UnityAction<Skill, ShopView> SellButtonClick;
 
@@ -31,9 +31,9 @@ public class ShopView : MonoBehaviour
     public void Render(Skill skill)
     {
         _icon.sprite = skill.Icon;
-        _description.text = skill.Desc + "\n" + "Ранг -" + skill.Rang.ToString();
-        _price.text = "Цена -" + skill.Price.ToString();
-        _damage.text = "Урон -" + skill.Damage.ToString();
+        _description.text = skill.ShowInfo();
+        _price.text = "Цена -" + skill.Pryce.ToString();
+        _rang.text = "Ранг -" + skill.Rang;
         _skill = skill;
     }
 
@@ -53,7 +53,7 @@ public class ShopView : MonoBehaviour
     private void DisableSalesButton()
     {
         _sellButton.gameObject.SetActive(false);
-        _damage.gameObject.SetActive(false);
+        _rang.gameObject.SetActive(false);
     }
 
     public void OnButtonClick()

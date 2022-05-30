@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3276288874453273413}
   - component: {fileID: 4534735982059595867}
   m_Layer: 5
-  m_Name: TextDamage
+  m_Name: TextRang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
   _description: {fileID: 1206771955361348737}
   _sellButton: {fileID: 1206771956780357367}
   _price: {fileID: 1485359701994769986}
-  _damage: {fileID: 4534735982059595867}
+  _rang: {fileID: 4534735982059595867}
 --- !u!1 &1206771956780357365
 GameObject:
   m_ObjectHideFlags: 0

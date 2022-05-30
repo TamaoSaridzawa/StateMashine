@@ -9,16 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1cf8758d546d264f886240524843b4c, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 71ccf616e87af5942b9dd6c8b31801b5, type: 3}
+  m_Name: LogicSkill_Shift
   m_EditorClassIdentifier: 
-  _description: 
-  _damage: 0
-  _increasedDamage: 0
-  _valueAddition: 0
-  _icon: {fileID: 0}
-  _isStudied: 0
-  _speed: 0
-  _price: 0
-  _rang: 0
-  _maxRang: 0
+  _shift: {fileID: 4101187141716999130, guid: db8e4c14d2169f942a58cb0e2525cc9d, type: 3}

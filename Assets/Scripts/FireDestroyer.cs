@@ -6,9 +6,9 @@ public class FireDestroyer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Fire>(out Fire fire))
+        if (collision.TryGetComponent<FireDamage>(out FireDamage fire))
         {
-            //Destroy(fire.gameObject);
+            Destroy(fire.gameObject);
         }
     }
 }

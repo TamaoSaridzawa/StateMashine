@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        _text.text = _player.Health.ToString();
+        _text.text = _player.MaxHealth.ToString();
         _slider.value = 1;
     }
 

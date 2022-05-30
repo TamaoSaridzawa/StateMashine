@@ -11,15 +11,16 @@ public class Player : MonoBehaviour
     [SerializeField] protected Transform ShootPoint;
     [SerializeField] private ShopView view;
     [SerializeField] private CoinMenu _coinMenu;
+   
     private SpriteRenderer _renderer;
 
     [SerializeField] private int _money;
 
     public int Money => _money;
 
-    public float Health => _maxhealth;
+    public float MaxHealth => _maxhealth;
+    public float CurrentHealth => _currentHealth;
 
-   
     public int IndexSkils { get; private set; } = 0;
 
     private Skill _currentSkill;
@@ -63,6 +64,12 @@ public class Player : MonoBehaviour
         _changedHealth?.Invoke(_currentHealth ,_maxhealth);
     }
 
+    public void WillHeal(float health)
+    {
+        _currentHealth += health;
+        _changedHealth?.Invoke(_currentHealth, _maxhealth);
+    }
+
     public void AppleDamage()
     {
         _currentSkill.Action(ShootPoint);
@@ -76,7 +83,7 @@ public class Player : MonoBehaviour
 
     public void BuySkill(Skill skill)
     {
-        SpendMoney(skill.Price);
+        SpendMoney(skill.Pryce);
         DisplayCurrentBalance();
         _skills.Add(skill);
     }
@@ -90,7 +97,7 @@ public class Player : MonoBehaviour
             if (updatedSkill.Equals(_skills[i]))
             {
                 _skills[i] = updatedSkill;
-                SpendMoney(_skills[i].Price);
+                SpendMoney(_skills[i].Pryce);
                 DisplayCurrentBalance();
             }
         }
@@ -114,5 +121,10 @@ public class Player : MonoBehaviour
     public void ChangedStartColor()
     {
         _renderer.color = Color.white;
+    }
+
+    public void SetPosition(Transform pos)
+    {
+        gameObject.transform.position = pos.position;
     }
 }

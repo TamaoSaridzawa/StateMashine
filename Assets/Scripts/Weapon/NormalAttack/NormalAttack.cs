@@ -6,22 +6,15 @@ using UnityEngine;
 public class NormalAttack : Skill
 {
     //[SerializeField] private Transform _pointAtack;
-    [SerializeField] private float _distanceAtack;
-    [SerializeField] private LayerMask _enemyLayers;
     //private Transform _curentPos;
-
     public override void Action(Transform pos)
     {
-        Collider2D hitEnemy = Physics2D.OverlapCircle(pos.position, _distanceAtack, _enemyLayers);
-        //_curentPos = pos;
+        LogicSkill.Use(pos);
+    }
 
-        if (hitEnemy == null)
-        {
-            return;
-        }
-
-        hitEnemy.GetComponent<Enemy>().TakeDamage(Damage);
-
+    public override string ShowInfo()
+    {
+        return Description = $"Мощный удар ближнего боя наносящий {CurrentSkillPower} урона одиночным целям";
     }
 
     //private void OnDrawGizmosSelected()

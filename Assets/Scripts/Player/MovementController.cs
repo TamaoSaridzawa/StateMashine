@@ -8,6 +8,8 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Player _player;
     [SerializeField] private Shop _shop;
+    [SerializeField] private Transform _teleportPoint;
+    [SerializeField] private ManagerSaveSkill _managerSaveSkill;
 
     private Vector2 _moveVector;
     private Rigidbody2D _rigidbody2D;
@@ -24,6 +26,10 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
+        _managerSaveSkill.InitTeleport();
+
+        _managerSaveSkill.InitDressingHealth();
+
         _moveVector.x = Input.GetAxis("Horizontal");
 
         if (_moveVector.x == 0)
@@ -43,6 +49,11 @@ public class MovementController : MonoBehaviour
                 Flip();
             }
             Walk();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _player.SetPosition(_teleportPoint);
         }
 
         if (Input.GetMouseButtonDown(0))

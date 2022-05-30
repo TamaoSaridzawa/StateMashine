@@ -12,17 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b31534468ca854c86555cee08f2a3d, type: 3}
   m_Name: NormalAttack
   m_EditorClassIdentifier: 
-  _description: 
-  _damage: 0
-  _increasedDamage: 0
-  _valueAddition: 0
-  _icon: {fileID: 0}
+  _increasedPower: 10
+  _valueAddition: 30
+  _icon: {fileID: 21300000, guid: 217feefd80e6d3e408f5c6e5cf6e6233, type: 3}
   _isStudied: 0
-  _speed: 0
-  _price: 0
-  _rang: 0
-  _maxRang: 0
-  _distanceAtack: 0
-  _enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
+  _speed: 10
+  _price: 60
+  _startRang: 1
+  _skillPower: 10
+  _maxRang: 3
+  LogicSkill: {fileID: 11400000, guid: 113937d27040c2644bec513d182d546c, type: 2}

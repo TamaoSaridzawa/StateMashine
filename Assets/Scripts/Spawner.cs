@@ -5,13 +5,16 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] List<Wave> _waves;
-    [SerializeField] private List<Transform> _spawnPoint;
+    //[SerializeField] private List<Transform> _spawnPoint;
     [SerializeField] Player _player;
 
     private Wave _currenWave;
     private int _numberWave = 0;
     private int _spawned;
+    private float _timeWave;
     private float _timeLastSpawn;
+    private int testRang = 1;
+    private int CurengRang = 1;
 
     private void Start()
     {
@@ -20,6 +23,9 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        _timeWave += Time.deltaTime;
+        //Debug.Log(testRang);
+
         if (_currenWave == null)
             return;
 
@@ -31,7 +37,7 @@ public class Spawner : MonoBehaviour
             {
                 if (_timeLastSpawn >= _currenWave.Delay)
                 {
-                    Enemy enemy = Instantiate(_currenWave.Template, _spawnPoint[Random.Range(0, _spawnPoint.Count)].position, Quaternion.identity).GetComponent<Enemy>();
+                    Enemy enemy = Instantiate(_currenWave.Template, _waves[_numberWave]._spawnWave[Random.Range(0, _waves[_numberWave]._spawnWave.Count)].position, Quaternion.identity).GetComponent<Enemy>();
                     enemy.Init(_player);
                     enemy.Dying += OnEnemyDying;
                     _spawned++;
@@ -40,8 +46,13 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                NextWaves();
-                _spawned = 0;
+                if (_numberWave + 1 < _waves.Count && _timeWave > _currenWave.timekill)
+                {
+                    NextWaves();
+                    _spawned = 0;
+                    _timeWave = 0;
+                }
+               
             }
         }
         else
@@ -58,7 +69,7 @@ public class Spawner : MonoBehaviour
 
     private void NextWaves()
     {
-        _currenWave = _waves[_numberWave++];
+        _currenWave = _waves[++_numberWave];
     }
 
     private void SetNumber(int index)
@@ -70,6 +81,8 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class Wave
 {
+    public float timekill;
+    public List<Transform> _spawnWave; 
     public GameObject Template;
     public float Delay;
     public float CounteEnemy;

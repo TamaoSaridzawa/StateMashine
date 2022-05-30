@@ -5,11 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skill/Shift", order = 51)]
 public class Shift : Skill
 {
-    [SerializeField] private Transform _teleportPoint;
-    [SerializeField] private Player _player;
-
     public override void Action(Transform pos)
     {
-        _player.transform.position = _teleportPoint.position;
+        LogicSkill.Use(pos);
+    }
+
+    public override string ShowInfo()
+    {
+        return Description = $"Сдвиг пространства, который позволяет перемещатся персонажу на короткую дистанцию";
     }
 }

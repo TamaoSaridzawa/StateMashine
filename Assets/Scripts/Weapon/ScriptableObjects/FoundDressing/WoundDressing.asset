@@ -15,10 +15,10 @@ MonoBehaviour:
   _increasedPower: 0
   _valueAddition: 0
   _icon: {fileID: 0}
-  _isStudied: 0
+  _isStudied: 1
   _speed: 0
-  _price: 0
-  _startRang: 0
-  _skillPower: 0
-  _maxRang: 0
+  _price: 20
+  _startRang: 1
+  _skillPower: 50
+  _maxRang: 3
   LogicSkill: {fileID: 11400000, guid: 5252d6b8289563a488907ec367218db3, type: 2}

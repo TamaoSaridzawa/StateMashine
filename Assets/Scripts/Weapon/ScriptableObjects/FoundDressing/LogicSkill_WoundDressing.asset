@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7496f5dcc841f7c48bb5511d6c070273, type: 3}
   m_Name: LogicSkill_WoundDressing
   m_EditorClassIdentifier: 
-  _woundDressing: {fileID: 0}
+  _woundDressing: {fileID: 4724484771656497579, guid: 6825a86642fbf784c8167c670453bce8, type: 3}

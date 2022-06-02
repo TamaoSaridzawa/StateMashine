@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _currentSkill = _skills[0];
         _coinMenu.ChangeMoney(_money);
-        
     }
 
     public void NextSkill()

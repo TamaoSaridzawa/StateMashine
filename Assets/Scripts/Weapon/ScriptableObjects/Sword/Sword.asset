@@ -15,7 +15,7 @@ MonoBehaviour:
   _increasedPower: 7
   _valueAddition: 15
   _icon: {fileID: 21300000, guid: 2f3518346e85adc41b8a08fcfe7940fa, type: 3}
-  _isStudied: 0
+  _isStudied: 1
   _speed: 50
   _price: 40
   _startRang: 1

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ccf616e87af5942b9dd6c8b31801b5, type: 3}
   m_Name: LogicSkill_Shift
   m_EditorClassIdentifier: 
-  _shift: {fileID: 4101187141716999130, guid: db8e4c14d2169f942a58cb0e2525cc9d, type: 3}
+  _shift: {fileID: -6953433649844714860, guid: db8e4c14d2169f942a58cb0e2525cc9d, type: 3}

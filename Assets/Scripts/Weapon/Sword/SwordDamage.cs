@@ -16,21 +16,6 @@ public class SwordDamage : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
     }
 
-    public void CreateSkill(Transform pos, bool isAerial)
-    {
-        Instantiate(gameObject, pos.position, pos.rotation);
-        _isAerial = isAerial;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            enemy.TakeDamage(_sword.Power);
-            Destroy(gameObject);
-        }
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -47,5 +32,19 @@ public class SwordDamage : MonoBehaviour
         {
             _rb.velocity = transform.right * _sword.Speed;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            enemy.TakeDamage(_sword.Power);
+            Destroy(gameObject);
+        }
+    }
+
+    public void CreateSkill(Transform pos)
+    {
+        Instantiate(gameObject, pos.position, pos.rotation);
     }
 }

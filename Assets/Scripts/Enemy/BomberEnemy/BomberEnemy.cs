@@ -6,14 +6,15 @@ public class BomberEnemy : Enemy
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
+
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         Expand();
         transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
@@ -24,7 +25,7 @@ public class BomberEnemy : Enemy
         if (collision.TryGetComponent<Player>(out Player player))
         {
             player.TakeDamage(_damage);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

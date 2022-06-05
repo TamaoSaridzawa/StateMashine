@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fbb974b6879f7499c7a312fba77e1d, type: 3}
   m_Name: Shift
   m_EditorClassIdentifier: 
+  LogicSkill: {fileID: 11400000, guid: e2be2468cf8ffc346b34d12a588b6f60, type: 2}
   _increasedPower: 0
   _valueAddition: 0
-  _icon: {fileID: 0}
-  _isStudied: 1
+  _icon: {fileID: 21300000, guid: cf38edd527ee6b740a019a205ebc5373, type: 3}
+  _isStudied: 0
   _speed: 0
   _price: 10
   _startRang: 1
   _skillPower: 0
   _maxRang: 3
-  LogicSkill: {fileID: 11400000, guid: e2be2468cf8ffc346b34d12a588b6f60, type: 2}

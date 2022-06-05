@@ -30,24 +30,24 @@ public class Shop : MonoBehaviour
         {
             if (skill.IsStudied)
             {
-                BuyRankSkill(skill, view);
+                SellRankSkill(skill, view);
             }
             else
             {
-                BuySkill(skill, view);
+                SellSkill(skill, view);
             }
 
             view.DescriptionChange(skill);
         }
     }
 
-    private void BuySkill(Skill skill, ShopView view)
+    private void SellSkill(Skill skill, ShopView view)
     {
             _player.BuySkill(skill);
             skill.Studied();
     }
 
-    private void BuyRankSkill(Skill skill, ShopView view)
+    private void SellRankSkill(Skill skill, ShopView view)
     {
         if (skill.Rang > skill.MaxRang)
         {

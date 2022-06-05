@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] List<Wave> _waves;
-    //[SerializeField] private List<Transform> _spawnPoint;
-    [SerializeField] Player _player;
+    [SerializeField] private List<Wave> _waves;
+    [SerializeField] private Player _player;
+    [SerializeField] private TMP_Text _timeCounter;
 
     private Wave _currenWave;
     private int _numberWave = 0;
     private int _spawned;
-    private float _timeWave;
+    //private float _timeWave;
     private float _timeLastSpawn;
-    private int testRang = 1;
-    private int CurengRang = 1;
 
     private void Start()
     {
@@ -23,11 +22,12 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        _timeWave += Time.deltaTime;
-        //Debug.Log(testRang);
-
         if (_currenWave == null)
             return;
+
+        _currenWave.timekill -= Time.deltaTime;
+       
+        ShowWaveInfo(_currenWave.timekill);
 
         _timeLastSpawn += Time.deltaTime;
 
@@ -37,7 +37,8 @@ public class Spawner : MonoBehaviour
             {
                 if (_timeLastSpawn >= _currenWave.Delay)
                 {
-                    Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)], _waves[_numberWave]._spawnWave[Random.Range(0, _waves[_numberWave]._spawnWave.Count)].position, Quaternion.identity).GetComponent<Enemy>();
+                    Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)], _waves[_numberWave]._spawnWave[Random.Range(0, _waves[_numberWave]._spawnWave.Count)].position, Quaternion.identity)
+                        .GetComponent<Enemy>();
                     enemy.Init(_player);
                     enemy.Dying += OnEnemyDying;
                     _spawned++;
@@ -46,13 +47,11 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                if (_numberWave + 1 < _waves.Count && _timeWave > _currenWave.timekill)
+                if (_numberWave + 1 < _waves.Count && _currenWave.timekill <= 0 )
                 {
                     NextWaves();
                     _spawned = 0;
-                    _timeWave = 0;
                 }
-               
             }
         }
         else
@@ -75,6 +74,11 @@ public class Spawner : MonoBehaviour
     private void SetNumber(int index)
     {
         _currenWave = _waves[index];
+    }
+
+    private void ShowWaveInfo( float time)
+    {
+        _timeCounter.text = $"До следующей волны  : {time} \n Волна № {_numberWave + 1}";
     }
 }
 

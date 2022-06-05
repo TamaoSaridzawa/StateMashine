@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d4ec9ced32b624ca4f57cc1c80d32d, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
+  LogicSkill: {fileID: 11400000, guid: e6d8ded4327edb746ab98e9061e3f560, type: 2}
   _increasedPower: 10
   _valueAddition: 20
   _icon: {fileID: 21300000, guid: c8307a4528f7acd4f8fd04dad4794113, type: 3}
@@ -21,5 +22,4 @@ MonoBehaviour:
   _startRang: 1
   _skillPower: 20
   _maxRang: 3
-  LogicSkill: {fileID: 11400000, guid: e6d8ded4327edb746ab98e9061e3f560, type: 2}
   _numberCharges: 0

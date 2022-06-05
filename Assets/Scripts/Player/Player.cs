@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _currentHealth;
     [SerializeField] private List<Skill> _skills;
     [SerializeField] protected Transform ShootPoint;
-    [SerializeField] private ShopView view;
     [SerializeField] private CoinMenu _coinMenu;
+    [SerializeField] private SkilllBar _skilllBar;
    
     private SpriteRenderer _renderer;
 
@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _currentSkill = _skills[0];
+        _skilllBar.ShowCurrentSkill(_currentSkill);
         _coinMenu.ChangeMoney(_money);
     }
 
@@ -51,7 +52,8 @@ public class Player : MonoBehaviour
                 IndexSkils = 0;
                 _currentSkill = _skills[IndexSkils];
             }
-            Debug.Log(((uint)IndexSkils));
+
+            _skilllBar.ShowCurrentSkill(_currentSkill);
         }
     }
 
@@ -87,10 +89,8 @@ public class Player : MonoBehaviour
         _skills.Add(skill);
     }
 
-   public void LearnNewSkillRank(Skill updatedSkill)
-   {
-       Debug.Log("Дошли до поиска умения");
-
+    public void LearnNewSkillRank(Skill updatedSkill)
+    {
         for (int i = 0; i < _skills.Count; i++)
         {
             if (updatedSkill.Equals(_skills[i]))
@@ -100,16 +100,6 @@ public class Player : MonoBehaviour
                 DisplayCurrentBalance();
             }
         }
-   }
-
-    private void DisplayCurrentBalance()
-    {
-        _coinMenu.ChangeMoney(_money);
-    }
-
-    private void SpendMoney(int money)
-    {
-        _money -= money;
     }
 
     public void ChangedColor()
@@ -125,5 +115,15 @@ public class Player : MonoBehaviour
     public void SetPosition(Transform pos)
     {
         gameObject.transform.position = pos.position;
+    }
+
+    private void DisplayCurrentBalance()
+    {
+        _coinMenu.ChangeMoney(_money);
+    }
+
+    private void SpendMoney(int money)
+    {
+        _money -= money;
     }
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private float _speed;
     [SerializeField] private Player _player;
     [SerializeField] private Shop _shop;
     [SerializeField] private Transform _teleportPoint;
     [SerializeField] private ManagerSaveSkill _managerSaveSkill;
+    [SerializeField] private float _timeLastAttack;
 
+    private float _currentTime;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidbody2D;
     private AnimationManager _animationManager;
@@ -19,13 +20,15 @@ public class MovementController : MonoBehaviour
 
     private void Start()
     {
-        
+        _currentTime = _timeLastAttack;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animationManager = GetComponent<AnimationManager>();
     }
 
     private void Update()
     {
+        _currentTime -= Time.deltaTime;
+
         _managerSaveSkill.InitTeleport();
 
         _managerSaveSkill.InitDressingHealth();
@@ -56,13 +59,14 @@ public class MovementController : MonoBehaviour
             _player.SetPosition(_teleportPoint);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _currentTime <= 0)
         {
             Debug.Log(IslooksRight);
             if (_player.CurrentSkill != null)
             {
                 _animationManager.Attack(_player.IndexSkils);
                 _player.AppleDamage();
+                _currentTime = _timeLastAttack;
             }
         }
 
@@ -79,6 +83,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             _player.NextSkill();
+            _currentTime = _timeLastAttack;
         }
     }
 
@@ -101,18 +106,6 @@ public class MovementController : MonoBehaviour
     private void Walk()
     {
         _animationManager.Run();
-
-        //if (_moveVector.x < 0)
-        //{
-           
-        //    IslooksRight = true;
-        //}
-
-        //if (_moveVector.x > 0)
-        //{
-        //    //transform.Rotate(0f, 180f, 0f);
-        //    IslooksRight = false;
-        //}
 
         _rigidbody2D.velocity = new Vector2(_moveVector.x * _speed, _rigidbody2D.velocity.y);
     }

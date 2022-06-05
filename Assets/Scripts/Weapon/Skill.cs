@@ -5,8 +5,7 @@ using UnityEngine.Events;
 
 public abstract class Skill : ScriptableObject
 {
-    protected string Description;
-   
+    [SerializeField] protected LogicSkill LogicSkill;
     [SerializeField] private int _increasedPower;
     [SerializeField] private int _valueAddition;
     [SerializeField] private Sprite _icon; 
@@ -16,7 +15,9 @@ public abstract class Skill : ScriptableObject
     [SerializeField] private int _startRang;
     [SerializeField] private int _skillPower;
     [SerializeField] private int _maxRang;
-    [SerializeField] protected LogicSkill LogicSkill;
+
+    protected string Description;
+    protected float CurrentTime;
     protected int CurrentSkillPower;
     protected int CurrentRang;
     protected int CurrentPryce;
@@ -24,20 +25,15 @@ public abstract class Skill : ScriptableObject
     public int Pryce => CurrentPryce;
     public int Power => CurrentSkillPower;
     public int Rang => CurrentRang;
-
-    ////public string Desc => Description;
- 
     public Sprite Icon => _icon;
     public float Speed => _speed;
-    //public int Price => _price;
     public int MaxRang => _maxRang;
-    //public int Rang => _startRang;
     public bool IsStudied => _isStudied;
 
     private void OnEnable()
     {
         CurrentSkillPower = _skillPower;
-        CurrentRang = 1;
+        CurrentRang = _startRang;
         CurrentPryce = _price;
     }
 
@@ -45,7 +41,6 @@ public abstract class Skill : ScriptableObject
 
     public abstract string ShowInfo();
    
-
     public void RaiseRang()
     {
         CurrentRang++;

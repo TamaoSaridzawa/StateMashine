@@ -6,10 +6,9 @@ using UnityEngine;
 public class LogicSkillSword : LogicSkill
 {
     [SerializeField] private SwordDamage _sword;
-   /* [SerializeField]*/ bool isAerial = true;
-
+ 
     public override void Use(Transform position)
     {
-        _sword.CreateSkill(position, isAerial);
+        _sword.CreateSkill(position);
     }
 }

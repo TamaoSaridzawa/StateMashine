@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6335089b542c8d14b9288b035351d926, type: 3}
   m_Name: WoundDressing
   m_EditorClassIdentifier: 
-  _increasedPower: 0
-  _valueAddition: 0
-  _icon: {fileID: 0}
-  _isStudied: 1
+  LogicSkill: {fileID: 11400000, guid: 5252d6b8289563a488907ec367218db3, type: 2}
+  _increasedPower: 10
+  _valueAddition: 10
+  _icon: {fileID: 21300000, guid: e4f606770c0bac244adbb71785ac43bb, type: 3}
+  _isStudied: 0
   _speed: 0
   _price: 20
   _startRang: 1
-  _skillPower: 50
+  _skillPower: 30
   _maxRang: 3
-  LogicSkill: {fileID: 11400000, guid: 5252d6b8289563a488907ec367218db3, type: 2}

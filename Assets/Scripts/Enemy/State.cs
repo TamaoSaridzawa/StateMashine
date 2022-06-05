@@ -8,8 +8,6 @@ public abstract class State : MonoBehaviour
 
     protected Player Target { get; private set; }
 
-  
-
     public void Enter(Player target )
     {
         if (enabled == false)

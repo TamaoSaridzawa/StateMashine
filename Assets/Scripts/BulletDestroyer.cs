@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireDestroyer : MonoBehaviour
+public class BulletDestroyer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<FireDamage>(out FireDamage fire))
         {
             Destroy(fire.gameObject);
+        }
+
+        if (collision.TryGetComponent<SwordDamage>(out SwordDamage sword))
+        {
+            Destroy(sword.gameObject);
         }
     }
 }

@@ -6,12 +6,11 @@ using UnityEngine;
 public class MoveState : State
 {
     [SerializeField] private float _speed;
-    private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     private void Start()
     {
-        //_spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
     }
 

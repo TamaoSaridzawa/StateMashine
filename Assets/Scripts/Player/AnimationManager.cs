@@ -42,4 +42,10 @@ public class AnimationManager : MonoBehaviour
         _animator.SetBool("Idle", false);
        
     }
+
+    //public void FireBall()
+    //{
+    //    _animator.SetBool("LaunchFireball", true);
+    //}
+
 }

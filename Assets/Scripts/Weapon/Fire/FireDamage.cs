@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireDamage : MonoBehaviour
 {
     [SerializeField] private Fire _fire;
+
     private Rigidbody2D _rb;
 
     private void Start()

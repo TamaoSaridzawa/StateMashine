@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CoinMenu : MonoBehaviour
 {
-    [SerializeField] TMP_Text _coin;
+    [SerializeField] private TMP_Text _coin;
 
     public void ChangeMoney(int money)
     {

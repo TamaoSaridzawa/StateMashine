@@ -24,13 +24,13 @@ public class Spawner : MonoBehaviour
         if (_currenWave == null)
             return;
 
-        if (_currenWave.timekill > 0)
+        if (_currenWave.Timekill > 0)
         {
-            _currenWave.timekill -= Time.deltaTime;
+            _currenWave.Timekill -= Time.deltaTime;
         }
        
        
-        ShowWaveInfo(_currenWave.timekill);
+        ShowWaveInfo(_currenWave.Timekill);
 
         _timeLastSpawn += Time.deltaTime;
 
@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
             {
                 if (_timeLastSpawn >= _currenWave.Delay)
                 {
-                    Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)], _waves[_numberWave]._spawnWave[Random.Range(0, _waves[_numberWave]._spawnWave.Count)].position, Quaternion.identity)
+                    Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)], _waves[_numberWave].SpawnWaves[Random.Range(0, _waves[_numberWave].SpawnWaves.Count)].position, Quaternion.identity)
                         .GetComponent<Enemy>();
                     enemy.Init(_player);
                     enemy.Dying += OnEnemyDying;
@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                if (_numberWave + 1 < _waves.Count && _currenWave.timekill <= 0 )
+                if (_numberWave + 1 < _waves.Count && _currenWave.Timekill <= 0 )
                 {
                     NextWaves();
                     _spawned = 0;
@@ -88,8 +88,8 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class Wave
 {
-    public float timekill;
-    public List<Transform> _spawnWave; 
+    public float Timekill;
+    public List<Transform> SpawnWaves; 
     public List <GameObject> Templates;
     public float Delay;
     public float CounteEnemy;

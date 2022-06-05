@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LogicSkillShift : LogicSkill
 {
-    [SerializeField] ShiftTeleport _shift;
+    [SerializeField] private ShiftTeleport _shift;
 
     public override void Use(Transform position)
     {

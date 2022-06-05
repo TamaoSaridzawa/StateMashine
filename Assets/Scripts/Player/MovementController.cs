@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -61,10 +62,8 @@ public class MovementController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && _currentTime <= 0)
         {
-            Debug.Log(IslooksRight);
             if (_player.CurrentSkill != null)
             {
-                //_animationManager.Attack(_player.IndexSkils);
                 _player.AppleDamage(_animationManager);
                 _currentTime = _timeLastAttack;
             }

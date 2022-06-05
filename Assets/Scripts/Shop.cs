@@ -7,7 +7,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private List<Skill> _skills;
     [SerializeField] private Player _player;
     [SerializeField] private ShopView _shopView;
-    [SerializeField] GameObject _skillsContainer;
+    [SerializeField] private GameObject _skillsContainer;
 
     private void Start()
     {

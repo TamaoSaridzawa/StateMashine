@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ManagerSaveSkill : MonoBehaviour
 {
-    [SerializeField] ShiftTeleport _shift;
-    [SerializeField] WoundDressingHealth _dressingHealth;
+    [SerializeField] private ShiftTeleport _shift;
+    [SerializeField] private WoundDressingHealth _dressingHealth;
     [SerializeField] private Transform _teleportPoint;
     [SerializeField] private Player _player;
 

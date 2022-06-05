@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AerialEnemy : Enemy
 {
-    [SerializeField] AerialEnemyBullet _bullet;
+    [SerializeField] private AerialEnemyBullet _bullet;
     [SerializeField] private List<Transform> _patrulPoint;
     [SerializeField] private float _timeLastAttack;
 

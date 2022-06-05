@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class EnemyHealtBar : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
-    [SerializeField] Slider _slider;
-    [SerializeField] TMP_Text _text;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private TMP_Text _text;
 
     private void Start()
     {

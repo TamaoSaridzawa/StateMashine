@@ -5,25 +5,22 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] protected Transform ShootPoint;
     [SerializeField] private float _maxhealth;
     [SerializeField] private float _currentHealth;
     [SerializeField] private List<Skill> _skills;
-    [SerializeField] protected Transform ShootPoint;
     [SerializeField] private CoinMenu _coinMenu;
     [SerializeField] private SkilllBar _skilllBar;
+    [SerializeField] private int _money;
    
     private SpriteRenderer _renderer;
-
-    [SerializeField] private int _money;
+    private Skill _currentSkill;
 
     public int Money => _money;
-
     public float MaxHealth => _maxhealth;
     public float CurrentHealth => _currentHealth;
 
     public int IndexSkils { get; private set; } = 0;
-
-    private Skill _currentSkill;
 
     public Skill CurrentSkill => _currentSkill;
 

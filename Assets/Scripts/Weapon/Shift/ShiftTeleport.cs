@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShiftTeleport : MonoBehaviour
 {
-    //[SerializeField] Shift _shift;
     private Transform _initTeleportPoint;
      private Player _player;
 
@@ -12,8 +11,6 @@ public class ShiftTeleport : MonoBehaviour
     {
         _initTeleportPoint = teleport;
         _player = player;
-        //_player.SetPosition(_teleportPoint);
-        //_player = player;
     }
 
     public void Teleport()

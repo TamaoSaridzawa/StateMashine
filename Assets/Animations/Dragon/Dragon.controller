@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WillLand
-  m_Speed: 0.1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -40,7 +40,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2884174259881332524}
-    m_Position: {x: 235, y: 65, z: 0}
+    m_Position: {x: 670, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7834886643409668828}
     m_Position: {x: 270, y: 130, z: 0}

@@ -6,9 +6,11 @@ using UnityEngine;
 public class LogicSkillWoundDressing : LogicSkill
 {
     [SerializeField] private WoundDressingHealth _woundDressing;
-
+  
     public override void Use(Transform position)
     {
         _woundDressing.Health();
     }
+
+
 }

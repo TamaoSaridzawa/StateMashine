@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Sword : Skill
 {
-    public override void Action(Transform startPointShoot)
+    public override void Action(Transform startPointShoot, AnimationManager animator)
     {
+        animator.Sword();
         LogicSkill.Use(startPointShoot);
 
     }

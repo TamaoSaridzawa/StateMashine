@@ -20,5 +20,5 @@ MonoBehaviour:
   _speed: 10
   _price: 60
   _startRang: 2
-  _skillPower: 10
+  _skillPower: 30
   _maxRang: 3

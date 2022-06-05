@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))] 
 public class FireDamage : MonoBehaviour
 {
     [SerializeField] private Fire _fire;

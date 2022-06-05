@@ -12,7 +12,6 @@ public class Spawner : MonoBehaviour
     private Wave _currenWave;
     private int _numberWave = 0;
     private int _spawned;
-    //private float _timeWave;
     private float _timeLastSpawn;
 
     private void Start()
@@ -25,7 +24,11 @@ public class Spawner : MonoBehaviour
         if (_currenWave == null)
             return;
 
-        _currenWave.timekill -= Time.deltaTime;
+        if (_currenWave.timekill > 0)
+        {
+            _currenWave.timekill -= Time.deltaTime;
+        }
+       
        
         ShowWaveInfo(_currenWave.timekill);
 

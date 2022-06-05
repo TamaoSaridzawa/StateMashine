@@ -97,13 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78c4893f5a8a574c970ac79515e8053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
-  _reward: 0
+  _currentHealth: 20
+  _maxHealth: 20
+  _reward: 40
   _bullet: {fileID: 7173600017742847354, guid: 5649842b0c378a947be93cc0ce8d96b9, type: 3}
   _patrulPoint:
   - {fileID: 7428221308598830914, guid: bb47feb84da49404e8881a32f6dc1815, type: 3}
   - {fileID: 4892382767926427595, guid: 7d0900c2c295dc043aad836842234ec6, type: 3}
-  _timeLastAttack: 3
+  _timeLastAttack: 2
 --- !u!61 &5183763281578777781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0998863, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5593586, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &7535354607066722520
 PrefabInstance:
@@ -152,6 +153,14 @@ PrefabInstance:
     - target: {fileID: 890885623823368536, guid: e4aac25c93a599541babc4727e189fc8, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890885623823368536, guid: e4aac25c93a599541babc4727e189fc8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 890885623823368536, guid: e4aac25c93a599541babc4727e189fc8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 890885623823368536, guid: e4aac25c93a599541babc4727e189fc8, type: 3}
       propertyPath: m_LocalPosition.x

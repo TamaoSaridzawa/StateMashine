@@ -15,5 +15,10 @@ public class BulletDestroyer : MonoBehaviour
         {
             Destroy(sword.gameObject);
         }
+
+        if (collision.TryGetComponent<AerialEnemyBullet>(out AerialEnemyBullet bullet))
+        {
+            bullet.gameObject.SetActive(false);
+        }
     }
 }

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class AerialEnemyBullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
-    private Vector2 _direction;
-    private Player _target;
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
+
+    private Vector2 _direction;
+    private Player _target;
 
     public void InitTarget(Player target)
     {

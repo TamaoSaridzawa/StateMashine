@@ -6,6 +6,7 @@ public class BomberEnemy : Enemy
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -24,12 +25,13 @@ public class BomberEnemy : Enemy
     {
         if (collision.TryGetComponent<Player>(out Player player))
         {
+            var partSystem = Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            partSystem.Play();
             player.TakeDamage(_damage);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
-    // После этого блока кода стала вылетать ошибка в юнити...
     private void Expand()
     {
         if (transform.position.x < Target.transform.position.x)

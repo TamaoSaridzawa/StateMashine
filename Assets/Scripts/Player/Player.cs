@@ -27,7 +27,9 @@ public class Player : MonoBehaviour
 
     public Skill CurrentSkill => _currentSkill;
 
-    public event UnityAction<float, float> _changedHealth;
+    public event UnityAction<float, float> ChangedHealth;
+
+    public event UnityAction Dying;
 
     private void Start()
     {
@@ -59,21 +61,25 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        ChangedColor();
-        //ChangedStartColor();
         _currentHealth -= damage;
-        _changedHealth?.Invoke(_currentHealth ,_maxhealth);
+
+        if (_currentHealth <= 0 )
+        {
+            Dying?.Invoke();
+        }
+
+        ChangedHealth?.Invoke(_currentHealth ,_maxhealth);
     }
 
     public void WillHeal(float health)
     {
         _currentHealth += health;
-        _changedHealth?.Invoke(_currentHealth, _maxhealth);
+        ChangedHealth?.Invoke(_currentHealth, _maxhealth);
     }
 
-    public void AppleDamage()
+    public void AppleDamage(AnimationManager animator )
     {
-        _currentSkill.Action(ShootPoint);
+        _currentSkill.Action(ShootPoint, animator);
     }
 
     public void AddMoney(int money)

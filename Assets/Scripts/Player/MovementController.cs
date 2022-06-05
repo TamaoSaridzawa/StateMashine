@@ -64,8 +64,8 @@ public class MovementController : MonoBehaviour
             Debug.Log(IslooksRight);
             if (_player.CurrentSkill != null)
             {
-                _animationManager.Attack(_player.IndexSkils);
-                _player.AppleDamage();
+                //_animationManager.Attack(_player.IndexSkils);
+                _player.AppleDamage(_animationManager);
                 _currentTime = _timeLastAttack;
             }
         }

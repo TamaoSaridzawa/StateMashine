@@ -5,11 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skill/Fire", order = 51)]
 public class Fire : Skill
 {
-    [SerializeField ]private int _numberCharges = 10;
-   
-
-    public override void Action(Transform startPointShoot)
+    public override void Action(Transform startPointShoot, AnimationManager animator)
     {
+        animator.FireBall();
         LogicSkill.Use(startPointShoot);
     }
 

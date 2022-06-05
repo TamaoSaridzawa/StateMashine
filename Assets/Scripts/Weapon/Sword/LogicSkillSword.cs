@@ -9,6 +9,7 @@ public class LogicSkillSword : LogicSkill
  
     public override void Use(Transform position)
     {
+
         _sword.CreateSkill(position);
     }
 }

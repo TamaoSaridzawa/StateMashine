@@ -7,8 +7,9 @@ public class NormalAttack : Skill
 {
     //[SerializeField] private Transform _pointAtack;
     //private Transform _curentPos;
-    public override void Action(Transform pos)
+    public override void Action(Transform pos, AnimationManager animator)
     {
+        animator.Attack();
         LogicSkill.Use(pos);
     }
 

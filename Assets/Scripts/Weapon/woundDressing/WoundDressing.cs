@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skill/WoundDressing", order = 51)]
 public class WoundDressing : Skill
 {
-    public override void Action(Transform position)
+    public override void Action(Transform position, AnimationManager animator)
     {
-        LogicSkill.Use(position);
+            animator.WoundDressing();
+            LogicSkill.Use(position);
     }
 
     public override string ShowInfo()

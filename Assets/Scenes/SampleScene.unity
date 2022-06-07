@@ -1026,7 +1026,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614053916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54, y: -0, z: 0}
+  m_LocalPosition: {x: 0.57, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 818308136}
@@ -1195,33 +1195,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - timekill: 30
-    _spawnWave:
+  - Timekill: 10
+    SpawnWaves:
     - {fileID: 677932105}
     - {fileID: 1103214148}
     Templates:
     - {fileID: 950903266460283994, guid: bd7906014f2650b46ac1e7fb61667c3b, type: 3}
     Delay: 3
-    CounteEnemy: 5
-  - timekill: 40
-    _spawnWave:
-    - {fileID: 1052964782}
-    - {fileID: 946210834}
+    CounteEnemy: 3
+  - Timekill: 10
+    SpawnWaves:
+    - {fileID: 7428221308598830914, guid: bb47feb84da49404e8881a32f6dc1815, type: 3}
+    - {fileID: 4892382767926427595, guid: 7d0900c2c295dc043aad836842234ec6, type: 3}
     Templates:
     - {fileID: 7683954252010253222, guid: c494608b7f8d0b44795eb0bb16d86edb, type: 3}
     Delay: 3
-    CounteEnemy: 5
-  - timekill: 30
-    _spawnWave:
-    - {fileID: 106028406}
-    - {fileID: 1720825830}
+    CounteEnemy: 3
+  - Timekill: 10
+    SpawnWaves:
+    - {fileID: 677932105}
+    - {fileID: 1103214148}
     Templates:
     - {fileID: 1811024997157396829, guid: 8c889ccdd07586749b514cec5855d144, type: 3}
     - {fileID: 950903266460283994, guid: bd7906014f2650b46ac1e7fb61667c3b, type: 3}
     Delay: 2
-    CounteEnemy: 8
-  - timekill: 15
-    _spawnWave:
+    CounteEnemy: 3
+  - Timekill: 0
+    SpawnWaves:
     - {fileID: 677932105}
     - {fileID: 1103214148}
     Templates:
@@ -1645,11 +1645,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51fa138eef50124b981c494ecca67e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxhealth: 100
-  _currentHealth: 100
+  ShootPoint: {fileID: 574665336}
+  _maxhealth: 1000
+  _currentHealth: 1000
   _skills:
   - {fileID: 11400000, guid: 8319242cfdab31643957dc51ec7ee93b, type: 2}
-  ShootPoint: {fileID: 574665336}
   _coinMenu: {fileID: 2013013496}
   _skilllBar: {fileID: 49907243}
   _money: 50

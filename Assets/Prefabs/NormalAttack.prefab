@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalAttack: {fileID: 11400000, guid: 8319242cfdab31643957dc51ec7ee93b, type: 2}
-  _distanceAtack: 1.5
+  _distanceAtack: 2
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 64

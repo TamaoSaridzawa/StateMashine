@@ -6,17 +6,19 @@ public class NormalAttackDamage : MonoBehaviour
 {
     [SerializeField] private NormalAttack _normalAttack;
     [SerializeField] private float _distanceAtack;
-    [SerializeField] private LayerMask _enemyLayers;
 
     public void CreateSkill(Transform pos)
     {
-        Collider2D hitEnemy = Physics2D.OverlapCircle(pos.position, _distanceAtack, _enemyLayers);
-
+        Collider2D hitEnemy = Physics2D.OverlapCircle(pos.position, _distanceAtack);
+ 
         if (hitEnemy == null)
         {
             return;
         }
 
-        hitEnemy.GetComponent<Enemy>().TakeDamage(_normalAttack.Power);
+        if (hitEnemy.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            enemy.TakeDamage(_normalAttack.Power);
+        }
     }
 }

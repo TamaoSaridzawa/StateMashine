@@ -5,6 +5,7 @@ using UnityEngine;
 public class WoundDressingHealth : MonoBehaviour
 {
     [SerializeField] private Skill _woundDressing;
+    private float _maxProcetnt = 100;
 
     private Player _player;
 
@@ -17,7 +18,7 @@ public class WoundDressingHealth : MonoBehaviour
 
     public void Health()
     {
-        _amountHealth = (_player.MaxHealth - _player.CurrentHealth) / 100 * _woundDressing.Power;
+        _amountHealth = (_player.MaxHealth - _player.CurrentHealth) / _maxProcetnt * _woundDressing.Power;
         _player.WillHeal(_amountHealth);
     }
 }

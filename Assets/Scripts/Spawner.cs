@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> _waves;
@@ -13,53 +14,55 @@ public class Spawner : MonoBehaviour
     private int _numberWave = 0;
     private int _spawned;
     private float _timeLastSpawn;
+    private Coroutine _spawnJob;
 
     private void Start()
     {
         SetNumber(_numberWave);
+       _spawnJob = StartCoroutine(Spawn());
     }
 
-    private void Update()
+    private IEnumerator Spawn()
     {
-        if (_currenWave == null)
-            return;
-
-        if (_currenWave.Timekill > 0)
+        while (_currenWave != null)
         {
+            _timeLastSpawn += Time.deltaTime;
             _currenWave.Timekill -= Time.deltaTime;
-        }
-       
-       
-        ShowWaveInfo(_currenWave.Timekill);
 
-        _timeLastSpawn += Time.deltaTime;
+            ShowWaveInfo(_currenWave.Timekill);
 
-        if (_numberWave < _waves.Count)
-        {
-            if (_spawned < _waves[_numberWave].CounteEnemy)
+            if (_numberWave < _waves.Count)
             {
-                if (_timeLastSpawn >= _currenWave.Delay)
+                if (_spawned < _waves[_numberWave].CounteEnemy)
                 {
-                    Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)], _waves[_numberWave].SpawnWaves[Random.Range(0, _waves[_numberWave].SpawnWaves.Count)].position, Quaternion.identity)
-                        .GetComponent<Enemy>();
-                    enemy.Init(_player);
-                    enemy.Dying += OnEnemyDying;
-                    _spawned++;
-                    _timeLastSpawn = 0;
+                    if (_timeLastSpawn >= _currenWave.Delay)
+                    {
+                        Enemy enemy = Instantiate(_currenWave.Templates[Random.Range(0, _currenWave.Templates.Count)]
+                            , _waves[_numberWave].SpawnWaves[Random.Range(0, _waves[_numberWave].SpawnWaves.Count)].position
+                            , Quaternion.identity).GetComponent<Enemy>();
+                        enemy.Init(_player);
+                        enemy.Dying += OnEnemyDying;
+                        _spawned++;
+                        _timeLastSpawn = 0;
+                    }
                 }
+                else
+                {
+                    if (_numberWave + 1 < _waves.Count && _currenWave.Timekill <= 0)
+                    {
+                        Debug.Log("Волна переключилась");
+                        NextWaves();
+                        _spawned = 0;
+                    }
+                }
+
+                yield return null;
             }
-            else
+
+            if (_numberWave + 1 == _waves.Count)
             {
-                if (_numberWave + 1 < _waves.Count && _currenWave.Timekill <= 0 )
-                {
-                    NextWaves();
-                    _spawned = 0;
-                }
+                StopSpawnJob();
             }
-        }
-        else
-        {
-            _currenWave = null;
         }
     }
 
@@ -72,6 +75,11 @@ public class Spawner : MonoBehaviour
     private void NextWaves()
     {
         _currenWave = _waves[++_numberWave];
+    }
+
+    private void StopSpawnJob()
+    {
+        StopCoroutine(_spawnJob);
     }
 
     private void SetNumber(int index)
